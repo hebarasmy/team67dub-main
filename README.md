@@ -5,35 +5,46 @@ This application was generated using JHipster 7.9.4, you can find documentation 
 # MySafety — Team67dub
 
 A calm, accessible web app to reach **trusted contacts fast** in unsafe situations.  
-Built as part of the University of Birmingham Team Project using **Angular (frontend)** and **Spring Boot (backend)** scaffolded with **JHipster**.
+Built for the University of Birmingham Team Project using **Angular (frontend)** and **Spring Boot (backend)** scaffolded with **JHipster**.
 
 ---
 
 ## 🧭 Why this exists
 
-While coding my dissertation, I always needed background noise — so I put on Ancient Egypt documentaries. That “white noise” turned into a full obsession with my country’s history. During that same time, I wanted an app that anyone in my family could use **in one tap** if they ever felt unsafe — big buttons, clear actions, no friction. So we built **MySafety**.
-
-> PS: That obsession also led me to build a separate hieroglyphics converter so I could copy accurate symbols. Different repo, same energy.
-
+We set out to design a tool that works **under stress**: one tap, clear choices, and accessibility from the start. MySafety focuses on **speed, clarity, and reliability** so anyone can get help quickly.
 
 ---
 
 ## ✨ Features
 
-- **SOS button** — one tap sends an alert with your **live location** to **trusted contacts**  
-- **Trusted contacts** — add/manage the people notified first  
-- **Voice recording** — capture audio during an incident as evidence  
-- **Real-time chat** — coordinate with contacts inside the app  
-- **Safety map** — shows your position and nearby help (e.g., hospitals)  
-- **Profile & settings** — control permissions and what gets shared  
-- **Accessibility-first UI** — large round buttons, strong contrast, clear typography
+- **SOS (one-tap)** — trigger an alert and notify trusted contacts
+- **Contacts** — manage trusted people who can receive pings/updates
+- **Chat & history** — in-app messaging with saved history
+- **Voice recording** — record, upload, and review audio messages
+- **Live location** — share current position
+- **Danger zones** — mark/see unsafe areas
+- **Nearby help** — hospitals & police stations
+- **Auth & profile** — JWT auth, account settings
+- **Accessibility-first UI** — large touch targets, strong contrast, clear language
+- **Responsive** — works on mobile and desktop
+
+---
+
+## 🏗️ Architecture
+
+- **Frontend:** Angular, RxJS, Router, Reactive Forms  
+- **Backend:** Spring Boot, REST + WebSocket (Socket.IO), JWT security  
+- **Persistence:** Liquibase migrations; **Dev:** H2; **Prod/Docker:** PostgreSQL  
+- **Tooling:** Maven wrapper, JHipster configs, Webpack, Tailwind (some screens)
 
 ---
 ## 🎥 Demos
 
-**Project Demo** – [▶️ Watch the MP4](docs/T6704-app-demo-1.mp4?raw=1)
+**Project Demo** — [▶️ Play (direct)](https://raw.githubusercontent.com/hebarasmy/team67dub-main/main/docs/T6704-app-demo-1.mp4)
 
-**Accessibility Demo** – [▶️ Watch the MP4](docs/T67P05-a11y-demo.mp4?raw=1)
+**Accessibility Demo** — [▶️ Play (direct)](https://raw.githubusercontent.com/hebarasmy/team67dub-main/main/docs/T67P05-a11y-demo.mp4)
+
+> Tip: If a corporate network/ad-blocker still blocks playback, right-click → “Save link as…” to download.
 
 ---
 
