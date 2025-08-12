@@ -40,11 +40,31 @@ We set out to design a tool that works **under stress**: one tap, clear choices,
 ---
 ## 🎥 Demos
 
-**Project Demo** — [▶️ Play (direct)](https://raw.githubusercontent.com/hebarasmy/team67dub-main/main/docs/T6704-app-demo-1.mp4)
+### Project Demo
+<video
+  src="https://github.com/hebarasmy/team67dub-main/raw/main/docs/T6704-app-demo-1.mp4"
+  controls
+  width="720"
+  preload="metadata">
+  Sorry, your browser can’t play this video. Use the link below to download.
+</video>
 
-**Accessibility Demo** — [▶️ Play (direct)](https://raw.githubusercontent.com/hebarasmy/team67dub-main/main/docs/T67P05-a11y-demo.mp4)
+**Direct link (fallback):** https://github.com/hebarasmy/team67dub-main/raw/main/docs/T6704-app-demo-1.mp4
 
-> Tip: If a corporate network/ad-blocker still blocks playback, right-click → “Save link as…” to download.
+---
+
+### Accessibility Demo
+<video
+  src="https://github.com/hebarasmy/team67dub-main/raw/main/docs/T67P05-a11y-demo.mp4"
+  controls
+  width="720"
+  preload="metadata">
+  Sorry, your browser can’t play this video. Use the link below to download.
+</video>
+
+**Direct link (fallback):** https://github.com/hebarasmy/team67dub-main/raw/main/docs/T67P05-a11y-demo.mp4
+
+> Tip: if the inline player doesn’t render for someone, the “Direct link” still streams or downloads the MP4.
 
 ---
 
