@@ -1,0 +1,130 @@
+<div>
+  <div
+    class="d-flex justify-content-center"
+    style="min-height: 100vh; align-items: center; background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)"
+  >
+    <div
+      class="col-md-8"
+      style="background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%; max-width: 450px"
+    >
+      <h1 data-cy="registerTitle" style="text-align: center; color: #333; margin-bottom: 1rem">Registration</h1>
+
+      <div class="alert alert-success" *ngIf="success" style="text-align: center">
+        <strong>Registration saved!</strong> Please check your email for confirmation.
+      </div>
+
+      <div class="alert alert-danger" *ngIf="error" style="text-align: center">
+        <strong>Registration failed!</strong> Please try again later.
+      </div>
+
+      <div class="alert alert-danger" *ngIf="errorUserExists" style="text-align: center">
+        <strong>Login name already registered!</strong> Please choose another one.
+      </div>
+
+      <div class="alert alert-danger" *ngIf="errorEmailExists" style="text-align: center">
+        <strong>Email is already in use!</strong> Please choose another one.
+      </div>
+
+      <div class="alert alert-danger" *ngIf="doNotMatch" style="text-align: center">The password and its confirmation do not match!</div>
+
+      <form name="form" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="login" style="display: block; margin-bottom: 0.5rem">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="login"
+            name="login"
+            placeholder="Your username"
+            formControlName="login"
+            data-cy="username"
+            required
+            style="padding: 1rem; border-radius: 5px; border: 1px solid #ced4da"
+          />
+          <!-- Username errors -->
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" style="display: block; margin-bottom: 0.5rem">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Your email"
+            formControlName="email"
+            data-cy="email"
+            required
+            style="padding: 1rem; border-radius: 5px; border: 1px solid #ced4da"
+          />
+          <!-- Email errors -->
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" style="display: block; margin-bottom: 0.5rem">New password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="New password"
+            formControlName="password"
+            data-cy="firstPassword"
+            required
+            style="padding: 1rem; border-radius: 5px; border: 1px solid #ced4da"
+          />
+          <!-- Password errors -->
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-3">
+          <label for="confirmPassword" style="display: block; margin-bottom: 0.5rem">New password confirmation</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm the new password"
+            formControlName="confirmPassword"
+            data-cy="secondPassword"
+            required
+            style="padding: 1rem; border-radius: 5px; border: 1px solid #ced4da"
+          />
+          <!-- Confirm Password errors -->
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="registerForm.invalid"
+          class="btn btn-primary"
+          data-cy="submit"
+          style="
+            width: 100%;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          Register
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1rem">
+        <span>If you want to </span>
+        <a class="alert-link" routerLink="/login" style="color: #ff6b6b">sign in</a>
+        <span>, you can try the default accounts:</span>
+        <br />
+        <span>- Administrator (login="admin" and password="admin")</span>
+        <br />
+        <span>- User (login="user" and password="user").</span>
+      </div>
+    </div>
+  </div>
+</div>

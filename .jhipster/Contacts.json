@@ -1,0 +1,58 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210113",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "contacts",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "contactName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactPhone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactRelation",
+      "fieldType": "RelationshipType",
+      "fieldValues": "FAMILY,FRIEND,COLLEAGUE,ACQUAINTANCE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Contacts",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "chatMessage",
+      "otherEntityRelationshipName": "contacts",
+      "relationshipName": "chatMessages",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "trustedContacts",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "sOSButton",
+      "otherEntityRelationshipName": "contacts",
+      "relationshipName": "sOSButton",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

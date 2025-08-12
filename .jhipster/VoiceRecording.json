@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210114",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "voice_recording",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "recordingDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "filePath",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "VoiceRecording",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "chatMessage",
+      "otherEntityRelationshipName": "voiceRecordings",
+      "relationshipName": "chatMessage",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "voiceRecordings",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

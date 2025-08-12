@@ -1,0 +1,100 @@
+// Color scheme definitions
+$background-color: white;
+$button-color: #6777ef;
+$button-hover-color: darken($button-color, 10%);
+$sos-color: #fc544b;
+$text-color: #ffffff;
+$modal-background-color: rgba(108, 117, 125, 0.8);
+
+body {
+  background-color: $background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.main-container {
+  display: grid;
+  width: 100%;
+  max-width: 1200px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  color: $text-color;
+  text-transform: uppercase;
+  font-weight: bold;
+  &:hover {
+    background-color: $button-hover-color;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.maps-button,
+.bottom-button,
+.settings-button,
+.profile-button {
+  background-color: $button-color;
+  height: 201px;
+}
+
+.sos-button {
+  background-color: $sos-color;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  font-size: 2em;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $modal-background-color;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: $background-color;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-content button {
+  background-color: $button-color;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: $text-color;
+  border: none;
+  &:hover {
+    background-color: $button-hover-color;
+  }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emergency App</title>
+    <style>
+      /* Inline CSS */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f4f7fa;
+        flex-direction: column;
+      }
+
+      .main-container {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        grid-template-columns: repeat(3, 1fr); /* 3x3 grid layout */
+        grid-template-rows: repeat(3, minmax(100px, auto)); /* Ensure each row is equally spaced */
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .button:hover {
+        background-color: #5061cf; /* Hover State */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Specific Styles for Buttons */
+      .maps-button {
+        background-color: #6777ef;
+        grid-column: 2 / span 2; /* Spans 2nd and 3rd column */
+        grid-row: 1; /* 1st row */
+      }
+
+      .sos-button {
+        background-color: #fc544b;
+        border-radius: 50%;
+        grid-column: 1; /* 1st column */
+        grid-row: 2; /* 2nd row */
+        align-self: center; /* Vertically center in the grid cell */
+        justify-self: center; /* Horizontally center in the grid cell */
+      }
+
+      .voice-recording-button {
+        background-color: #6777ef;
+        grid-column: 2; /* 2nd column */
+        grid-row: 2; /* 2nd row */
+      }
+
+      .close-contacts-button {
+        background-color: #6777ef;
+        grid-column: 3; /* 3rd column */
+        grid-row: 2; /* 2nd row */
+      }
+
+      .profile-button {
+        background-color: #6777ef;
+        grid-column: 3; /* 3rd column */
+        grid-row: 3; /* 3rd row */
+      }
+
+      .settings-button {
+        background-color: #6777ef; /* Different color for contrast */
+        color: white; /* Text color for contrast */
+        grid-column: 2; /* 2nd column */
+        grid-row: 3; /* 3rd row */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- Buttons in the layout as per the image provided -->
+      <!--<button class="button maps-button">Maps</button>-->
+      <a class="button maps-button" routerLink="danger-zone" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Danger Zone
+        <!--<button class="button voice-recording-button"> Voice Recording</button>-->
+      </a>
+      <button class="button sos-button" (click)="toggleModal()">SOS</button>
+
+      <a
+        class="button voice-recording-button"
+        routerLink="voice-recording"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Voice Recording
+        <!--<button class="button voice-recording-button"> Voice Recording</button>-->
+      </a>
+
+      <!--<button class="button close-contacts-button">Close Contacts</button>-->
+      <a class="button close-contacts-button" routerLink="contacts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Close Contacts
+      </a>
+
+      <button
+        class="button close-contacts-button"
+        routerLink="contacts"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Close Contacts
+      </button>
+
+      <!--<button class="button profile-button">Profile</button>-->
+      <a class="button profile-button" routerLink="account/settings" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Profile
+      </a>
+
+
+      <button class="button settings-button">Chat</button>
+
+      <button class="button settings-button" (click)="handleChatClick()">Chat</button>
+
+    </div>
+    <!-- SOS Modal Popup -->
+    <div *ngIf="showModal" class="modal">
+      <div class="modal-content">
+        <p>Are you in danger?</p>
+        <button (click)="handleSOSResponse(true)">Yes</button>
+        <button (click)="handleSOSResponse(false)">No</button>
+      </div>
+    </div>
+  </body>
+</html>

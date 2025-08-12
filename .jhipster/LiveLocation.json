@@ -1,0 +1,56 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210118",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "live_location",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "currentLocation",
+      "fieldType": "Geopoint",
+      "fieldValues": "LATITUDE,LONGITUDE"
+    },
+    {
+      "fieldName": "currentLocationName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "LiveLocation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "liveLocations",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "hospital",
+      "otherEntityRelationshipName": "liveLocation",
+      "relationshipName": "hospitals",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "policeStation",
+      "otherEntityRelationshipName": "liveLocation",
+      "relationshipName": "policeStations",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "sOSButton",
+      "otherEntityRelationshipName": "liveLocation",
+      "ownerSide": false,
+      "relationshipName": "sOSButtons",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

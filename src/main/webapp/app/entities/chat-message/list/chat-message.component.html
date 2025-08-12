@@ -1,0 +1,160 @@
+<div>
+  <h2 id="page-heading" data-cy="ChatMessageHeading">
+    <span>Chat Messages</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-chat-message"
+        [routerLink]="['/chat-message/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Chat Message </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="chatMessages?.length === 0">
+    <span>No Chat Messages found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="chatMessages && chatMessages.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="senderUserId">
+            <div class="d-flex">
+              <span>Sender User Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="receiverUserId">
+            <div class="d-flex">
+              <span>Receiver User Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="messageContent">
+            <div class="d-flex">
+              <span>Message Content</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="messageDateTime">
+            <div class="d-flex">
+              <span>Message Date Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sender.id">
+            <div class="d-flex">
+              <span>Sender</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="receiver.id">
+            <div class="d-flex">
+              <span>Receiver</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="liveLocation.id">
+            <div class="d-flex">
+              <span>Live Location</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="voiceRecording.id">
+            <div class="d-flex">
+              <span>Voice Recording</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contacts.id">
+            <div class="d-flex">
+              <span>Contacts</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let chatMessage of chatMessages; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/chat-message', chatMessage.id, 'view']">{{ chatMessage.id }}</a>
+          </td>
+          <td>{{ chatMessage.senderUserId }}</td>
+          <td>{{ chatMessage.receiverUserId }}</td>
+          <td>{{ chatMessage.messageContent }}</td>
+          <td>{{ chatMessage.messageDateTime | formatMediumDatetime }}</td>
+          <td>
+            {{ chatMessage.sender?.id }}
+          </td>
+          <td>
+            {{ chatMessage.receiver?.id }}
+          </td>
+          <td>
+            <div *ngIf="chatMessage.liveLocation">
+              <a [routerLink]="['/live-location', chatMessage.liveLocation.id, 'view']">{{ chatMessage.liveLocation.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="chatMessage.voiceRecording">
+              <a [routerLink]="['/voice-recording', chatMessage.voiceRecording.id, 'view']">{{ chatMessage.voiceRecording.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="chatMessage.contacts">
+              <a [routerLink]="['/contacts', chatMessage.contacts.id, 'view']">{{ chatMessage.contacts.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/chat-message', chatMessage.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/chat-message', chatMessage.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(chatMessage)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

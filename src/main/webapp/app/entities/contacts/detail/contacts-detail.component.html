@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="contacts">
+      <h2 data-cy="contactsDetailsHeading"><span>Contacts</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ contacts.id }}</span>
+        </dd>
+        <dt><span>Image</span></dt>
+        <dd>
+          <div *ngIf="contacts.image">
+            <a (click)="openFile(contacts.image, contacts.imageContentType)">
+              <img [src]="'data:' + contacts.imageContentType + ';base64,' + contacts.image" style="max-width: 100%" alt="contacts image" />
+            </a>
+            {{ contacts.imageContentType }}, {{ byteSize(contacts.image) }}
+          </div>
+        </dd>
+        <dt><span>Contact Name</span></dt>
+        <dd>
+          <span>{{ contacts.contactName }}</span>
+        </dd>
+        <dt><span>Contact Phone</span></dt>
+        <dd>
+          <span>{{ contacts.contactPhone }}</span>
+        </dd>
+        <dt><span>Contact Relation</span></dt>
+        <dd>
+          <span>{{ contacts.contactRelation }}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+          <span *ngFor="let user of contacts.users; let last = last"> {{ user.id }}{{ last ? '' : ', ' }} </span>
+        </dd>
+        <dt><span>S OS Button</span></dt>
+        <dd>
+          <div *ngIf="contacts.sOSButton">
+            <a [routerLink]="['/sos-button', contacts.sOSButton.id, 'view']">{{ contacts.sOSButton.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/contacts', contacts.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

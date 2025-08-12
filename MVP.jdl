@@ -1,0 +1,120 @@
+// Enums
+enum RelationshipType {
+    FAMILY
+    FRIEND
+    COLLEAGUE
+    ACQUAINTANCE
+}
+
+enum Geopoint {
+    LATITUDE
+    LONGITUDE
+}
+
+// Entities
+entity User {
+    Id Long required
+    Username String
+    Password String
+    Email String
+    PhoneNumber String
+    FirstName String
+    LastName String
+    DateOfBirth Instant
+    ProfilePicture ImageBlob
+    Bio String
+}
+
+entity SOSButton {
+    Id Long
+    Label String
+    IsActivated Boolean
+    Location Geopoint
+}
+
+entity Contacts {
+    Id Long
+    Image ImageBlob
+    ContactName String
+    ContactPhone String
+    ContactRelation RelationshipType
+}
+
+entity VoiceRecording {
+    Id Long
+    Title String
+    Duration Long
+    RecordingDate Instant
+    FilePath String
+}
+
+entity ChatMessage {
+    Id Long
+    SenderUserId Long
+    ReceiverUserId Long
+    MessageContent String
+    MessageDateTime Instant
+    
+}
+
+entity UserChatHistory {
+    id Long required
+    senderUserID Long
+    receiverUserID Long
+    messageContent String
+    messageDateTime Instant
+}
+
+entity DangerZone {
+    Id Long
+    ZoneName String
+    ZoneDescription String
+    ZoneLocation Geopoint
+}
+
+entity LiveLocation {
+    Id Long
+    CurrentLocation Geopoint
+    CurrentLocationName String
+}
+
+entity PoliceStation {
+    Id Long
+    StationName String
+    StationLocation Geopoint
+}
+
+entity Hospital {
+    Id Long
+    HospitalName String
+    HospitalLocation Geopoint
+}
+
+// Relations
+
+relationship OneToOne {
+    SOSButton{User} to User { SOSButton }
+    SOSButton { LiveLocation } to LiveLocation { SOSButtons }
+    LiveLocation { User } to User { LiveLocations }
+}
+
+relationship OneToMany {
+    SOSButton { Contacts } to Contacts { SOSButton }
+    Contacts { ChatMessages } to ChatMessage { Contacts }
+    LiveLocation { Hospitals } to Hospital { LiveLocation }
+    LiveLocation { PoliceStations } to PoliceStation { LiveLocation }
+}
+
+relationship ManyToOne {
+    VoiceRecording { ChatMessage } to ChatMessage { VoiceRecordings }
+    ChatMessage { Sender } to User
+    ChatMessage { Receiver } to User
+    ChatMessage { LiveLocation } to LiveLocation
+    ChatMessage { VoiceRecording } to VoiceRecording
+    VoiceRecording { User } to User { VoiceRecordings }
+    UserChatHistory {User} to User
+}
+
+relationship ManyToMany {
+    Contacts { User } to User { TrustedContacts }
+}

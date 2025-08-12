@@ -1,0 +1,129 @@
+<!--<div>-->
+<!--  <h2 id="page-heading" data-cy="VoiceRecordingHeading">-->
+<!--    <span>Voice Recordings</span>-->
+
+<!--    <div class="d-flex justify-content-end">-->
+<!--      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">-->
+<!--        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>-->
+<!--        <span>Refresh list</span>-->
+<!--      </button>-->
+
+<!--      <button-->
+<!--        id="jh-create-entity"-->
+<!--        data-cy="entityCreateButton"-->
+<!--        class="btn btn-primary jh-create-entity create-voice-recording"-->
+<!--        [routerLink]="['/voice-recording/new']"-->
+<!--      >-->
+<!--        <fa-icon icon="plus"></fa-icon>-->
+<!--        <span> Create a new Voice Recording </span>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </h2>-->
+
+<!--  <jhi-alert-error></jhi-alert-error>-->
+
+<!--  <jhi-alert></jhi-alert>-->
+
+<!--  <div class="alert alert-warning" id="no-result" *ngIf="voiceRecordings?.length === 0">-->
+<!--    <span>No Voice Recordings found</span>-->
+<!--  </div>-->
+
+<!--  <div class="table-responsive table-entities" id="entities" *ngIf="voiceRecordings && voiceRecordings.length > 0">-->
+<!--    <table class="table table-striped" aria-describedby="page-heading">-->
+<!--      <thead>-->
+<!--        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">-->
+<!--          <th scope="col" jhiSortBy="id">-->
+<!--            <div class="d-flex">-->
+<!--              <span>Id</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="title">-->
+<!--            <div class="d-flex">-->
+<!--              <span>Title</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="duration">-->
+<!--            <div class="d-flex">-->
+<!--              <span>Duration</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="recordingDate">-->
+<!--            <div class="d-flex">-->
+<!--              <span>Recording Date</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="filePath">-->
+<!--            <div class="d-flex">-->
+<!--              <span>File Path</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="chatMessage.id">-->
+<!--            <div class="d-flex">-->
+<!--              <span>Chat Message</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col" jhiSortBy="user.id">-->
+<!--            <div class="d-flex">-->
+<!--              <span>User</span>-->
+<!--              <fa-icon class="p-1" icon="sort"></fa-icon>-->
+<!--            </div>-->
+<!--          </th>-->
+<!--          <th scope="col"></th>-->
+<!--        </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--        <tr *ngFor="let voiceRecording of voiceRecordings; trackBy: trackId" data-cy="entityTable">-->
+<!--          <td>-->
+<!--            <a [routerLink]="['/voice-recording', voiceRecording.id, 'view']">{{ voiceRecording.id }}</a>-->
+<!--          </td>-->
+<!--          <td>{{ voiceRecording.title }}</td>-->
+<!--          <td>{{ voiceRecording.duration }}</td>-->
+<!--          <td>{{ voiceRecording.recordingDate | formatMediumDatetime }}</td>-->
+<!--          <td>{{ voiceRecording.filePath }}</td>-->
+<!--          <td>-->
+<!--            <div *ngIf="voiceRecording.chatMessage">-->
+<!--              <a [routerLink]="['/chat-message', voiceRecording.chatMessage.id, 'view']">{{ voiceRecording.chatMessage.id }}</a>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            {{ voiceRecording.user?.id }}-->
+<!--          </td>-->
+<!--          <td class="text-end">-->
+<!--            <div class="btn-group">-->
+<!--              <button-->
+<!--                type="submit"-->
+<!--                [routerLink]="['/voice-recording', voiceRecording.id, 'view']"-->
+<!--                class="btn btn-info btn-sm"-->
+<!--                data-cy="entityDetailsButton"-->
+<!--              >-->
+<!--                <fa-icon icon="eye"></fa-icon>-->
+<!--                <span class="d-none d-md-inline">View</span>-->
+<!--              </button>-->
+
+<!--              <button-->
+<!--                type="submit"-->
+<!--                [routerLink]="['/voice-recording', voiceRecording.id, 'edit']"-->
+<!--                class="btn btn-primary btn-sm"-->
+<!--                data-cy="entityEditButton"-->
+<!--              >-->
+<!--                <fa-icon icon="pencil-alt"></fa-icon>-->
+<!--                <span class="d-none d-md-inline">Edit</span>-->
+<!--              </button>-->
+
+<!--              <button type="submit" (click)="delete(voiceRecording)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">-->
+<!--                <fa-icon icon="times"></fa-icon>-->
+<!--                <span class="d-none d-md-inline">Delete</span>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->

@@ -1,0 +1,18 @@
+# Java / Maven
+target/
+*.log
+*.iml
+.idea/
+.vscode/
+
+# Angular (JHipster frontend)
+src/main/webapp/node_modules/
+src/main/webapp/dist/
+src/main/webapp/.angular/
+src/main/webapp/.cache/
+src/main/webapp/.husky/
+src/main/webapp/coverage/
+
+# OS / env
+.DS_Store
+.env

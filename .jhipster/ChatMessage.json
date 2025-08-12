@@ -1,0 +1,69 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210115",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "chat_message",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "senderUserId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "receiverUserId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "messageContent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "messageDateTime",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ChatMessage",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "sender",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "relationshipName": "receiver",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "liveLocation",
+      "relationshipName": "liveLocation",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "voiceRecording",
+      "relationshipName": "voiceRecording",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "contacts",
+      "otherEntityRelationshipName": "chatMessages",
+      "relationshipName": "contacts",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "voiceRecording",
+      "otherEntityRelationshipName": "chatMessage",
+      "relationshipName": "voiceRecordings",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210117",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "danger_zone",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "zoneName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zoneDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zoneLocation",
+      "fieldType": "Geopoint",
+      "fieldValues": "LATITUDE,LONGITUDE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "DangerZone",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

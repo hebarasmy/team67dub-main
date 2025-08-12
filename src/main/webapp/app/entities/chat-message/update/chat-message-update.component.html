@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-chat-message-heading" data-cy="ChatMessageCreateUpdateHeading">Create or edit a Chat Message</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_senderUserId">Sender User Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="senderUserId"
+            id="field_senderUserId"
+            data-cy="senderUserId"
+            formControlName="senderUserId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_receiverUserId">Receiver User Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="receiverUserId"
+            id="field_receiverUserId"
+            data-cy="receiverUserId"
+            formControlName="receiverUserId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_messageContent">Message Content</label>
+          <input
+            type="text"
+            class="form-control"
+            name="messageContent"
+            id="field_messageContent"
+            data-cy="messageContent"
+            formControlName="messageContent"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_messageDateTime">Message Date Time</label>
+          <div class="d-flex">
+            <input
+              id="field_messageDateTime"
+              data-cy="messageDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="messageDateTime"
+              formControlName="messageDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_sender">Sender</label>
+          <select
+            class="form-control"
+            id="field_sender"
+            data-cy="sender"
+            name="sender"
+            formControlName="sender"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_receiver">Receiver</label>
+          <select
+            class="form-control"
+            id="field_receiver"
+            data-cy="receiver"
+            name="receiver"
+            formControlName="receiver"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_liveLocation">Live Location</label>
+          <select
+            class="form-control"
+            id="field_liveLocation"
+            data-cy="liveLocation"
+            name="liveLocation"
+            formControlName="liveLocation"
+            [compareWith]="compareLiveLocation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="liveLocationOption" *ngFor="let liveLocationOption of liveLocationsSharedCollection">
+              {{ liveLocationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_voiceRecording">Voice Recording</label>
+          <select
+            class="form-control"
+            id="field_voiceRecording"
+            data-cy="voiceRecording"
+            name="voiceRecording"
+            formControlName="voiceRecording"
+            [compareWith]="compareVoiceRecording"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="voiceRecordingOption" *ngFor="let voiceRecordingOption of voiceRecordingsSharedCollection">
+              {{ voiceRecordingOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_contacts">Contacts</label>
+          <select
+            class="form-control"
+            id="field_contacts"
+            data-cy="contacts"
+            name="contacts"
+            formControlName="contacts"
+            [compareWith]="compareContacts"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="contactsOption" *ngFor="let contactsOption of contactsSharedCollection">{{ contactsOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

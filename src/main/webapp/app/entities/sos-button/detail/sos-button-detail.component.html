@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sOSButton">
+      <h2 data-cy="sOSButtonDetailsHeading"><span>SOS Button</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ sOSButton.id }}</span>
+        </dd>
+        <dt><span>Label</span></dt>
+        <dd>
+          <span>{{ sOSButton.label }}</span>
+        </dd>
+        <dt><span>Is Activated</span></dt>
+        <dd>
+          <span>{{ sOSButton.isActivated }}</span>
+        </dd>
+        <dt><span>Location</span></dt>
+        <dd>
+          <span>{{ sOSButton.location }}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+          <span>{{ sOSButton.user?.id }}</span>
+        </dd>
+        <dt><span>Live Location</span></dt>
+        <dd>
+          <div *ngIf="sOSButton.liveLocation">
+            <a [routerLink]="['/live-location', sOSButton.liveLocation.id, 'view']">{{ sOSButton.liveLocation.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sos-button', sOSButton.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

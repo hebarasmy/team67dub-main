@@ -1,0 +1,106 @@
+<div>
+  <h2 id="page-heading" data-cy="HospitalHeading">
+    <span>Hospitals</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-hospital"
+        [routerLink]="['/hospital/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Hospital </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="hospitals?.length === 0">
+    <span>No Hospitals found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="hospitals && hospitals.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hospitalName">
+            <div class="d-flex">
+              <span>Hospital Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="hospitalLocation">
+            <div class="d-flex">
+              <span>Hospital Location</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="liveLocation.id">
+            <div class="d-flex">
+              <span>Live Location</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hospital of hospitals; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/hospital', hospital.id, 'view']">{{ hospital.id }}</a>
+          </td>
+          <td>{{ hospital.hospitalName }}</td>
+          <td>{{ hospital.hospitalLocation }}</td>
+          <td>
+            <div *ngIf="hospital.liveLocation">
+              <a [routerLink]="['/live-location', hospital.liveLocation.id, 'view']">{{ hospital.liveLocation.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/hospital', hospital.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/hospital', hospital.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(hospital)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

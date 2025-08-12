@@ -1,0 +1,94 @@
+<div>
+  <div
+    class="d-flex justify-content-center"
+    style="min-height: 100vh; align-items: center; background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)"
+  >
+    <div
+      class="col-md-8"
+      style="background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 450px"
+    >
+      <h2 *ngIf="settingsForm.value.login" style="text-align: center; color: #333; margin-bottom: 1rem">
+        Profile for <strong>{{ settingsForm.value.login }}</strong>
+      </h2>
+
+      <div class="alert alert-success" *ngIf="success" style="text-align: center">
+        <strong>Settings saved!</strong>
+      </div>
+
+      <!-- Error handling component should go here. Replace 'jhi-alert-error' with your error component if needed. -->
+
+      <form name="form" role="form" (ngSubmit)="save()" [formGroup]="settingsForm" *ngIf="settingsForm.value.login" novalidate>
+        <!-- First Name Input -->
+        <div class="mb-3">
+          <label class="form-label" for="firstName" style="display: block; margin-bottom: 0.5rem">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            placeholder="Your first name"
+            formControlName="firstName"
+            data-cy="firstname"
+            required
+            style="padding: 1rem; border-radius: 5px; border: 1px solid #ced4da"
+          />
+          <!-- Validation messages for first name -->
+        </div>
+
+        <!-- Last Name Input -->
+        <div class="mb-3">
+          <label class="form-label" for="lastName" style="display: block; margin-bottom: 0.5rem">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="Your last name"
+            formControlName="lastName"
+            data-cy="lastname"
+            required
+            style="padding: 1rem; border-radius: 5px; border: 1px solid #ced4da"
+          />
+          <!-- Validation messages for last name -->
+        </div>
+
+        <!-- Email Input -->
+        <div class="mb-3">
+          <label class="form-label" for="email" style="display: block; margin-bottom: 0.5rem">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Your email"
+            formControlName="email"
+            data-cy="email"
+            required
+            style="padding: 1rem; border-radius: 5px; border: 1px solid white"
+          />
+          <!-- Validation messages for email -->
+        </div>
+
+        <!-- Save Button -->
+        <button
+          type="submit"
+          [disabled]="settingsForm.invalid"
+          class="btn btn-primary"
+          data-cy="submit"
+          style="
+            width: 100%;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+          "
+        >
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

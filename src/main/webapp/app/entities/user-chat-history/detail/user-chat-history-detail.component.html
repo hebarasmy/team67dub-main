@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userChatHistory">
+      <h2 data-cy="userChatHistoryDetailsHeading"><span>User Chat History</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ userChatHistory.id }}</span>
+        </dd>
+        <dt><span>Sender User ID</span></dt>
+        <dd>
+          <span>{{ userChatHistory.senderUserID }}</span>
+        </dd>
+        <dt><span>Receiver User ID</span></dt>
+        <dd>
+          <span>{{ userChatHistory.receiverUserID }}</span>
+        </dd>
+        <dt><span>Message Content</span></dt>
+        <dd>
+          <span>{{ userChatHistory.messageContent }}</span>
+        </dd>
+        <dt><span>Message Date Time</span></dt>
+        <dd>
+          <span>{{ userChatHistory.messageDateTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+          <span>{{ userChatHistory.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-chat-history', userChatHistory.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

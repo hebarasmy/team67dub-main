@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="voiceRecording">
+      <h2 data-cy="voiceRecordingDetailsHeading"><span>Voice Recording</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ voiceRecording.id }}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+          <span>{{ voiceRecording.title }}</span>
+        </dd>
+        <dt><span>Duration</span></dt>
+        <dd>
+          <span>{{ voiceRecording.duration }}</span>
+        </dd>
+        <dt><span>Recording Date</span></dt>
+        <dd>
+          <span>{{ voiceRecording.recordingDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>File Path</span></dt>
+        <dd>
+          <span>{{ voiceRecording.filePath }}</span>
+        </dd>
+        <dt><span>Chat Message</span></dt>
+        <dd>
+          <div *ngIf="voiceRecording.chatMessage">
+            <a [routerLink]="['/chat-message', voiceRecording.chatMessage.id, 'view']">{{ voiceRecording.chatMessage.id }}</a>
+          </div>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+          <span>{{ voiceRecording.user?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/voice-recording', voiceRecording.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

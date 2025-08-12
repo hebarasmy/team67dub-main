@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Contacts.
+    -->
+    <changeSet id="20240326210113-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="contacts_id"
+                                 baseTableName="rel_contacts__user"
+                                 constraintName="fk_rel_contacts__user__contacts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contacts"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="rel_contacts__user"
+                                 constraintName="fk_rel_contacts__user__user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="sosbutton_id"
+                                 baseTableName="contacts"
+                                 constraintName="fk_contacts__sosbutton_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sos_button"/>
+    </changeSet>
+</databaseChangeLog>

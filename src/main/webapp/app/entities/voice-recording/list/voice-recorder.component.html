@@ -1,0 +1,42 @@
+<div class="voice-recording-feature" style="text-align: center">
+  <h2 style="margin-bottom: 20px">Current Recording</h2>
+  <div class="current-recording">
+    <div class="recording-controls">
+      <canvas #visualizer width="640" height="100"></canvas>
+      <button class="btn start-btn" (click)="startRecording()" *ngIf="!isRecording && !blobUrl">Start</button>
+      <button class="btn stop-btn" (click)="stopRecording()" *ngIf="isRecording && !blobUrl">Stop</button>
+      <button class="btn save-btn" (click)="save()" *ngIf="!isRecording && blobUrl">Save</button>
+      <div class="waveform-placeholder">&#9612;&#9612;&#9616;&#9612;&#9612;&#9616;&#9612;&#9612;</div>
+    </div>
+
+    <div *ngIf="isRecording && !blobUrl">{{ recordedTime }}</div>
+
+    <div class="recording-timestamp" style="margin-bottom: 5px">
+      {{ currentDateTime }}
+    </div>
+    <div class="recording-timer" *ngIf="!isRecording && !blobUrl">00:00:00</div>
+  </div>
+
+  <h3 style="margin-top: 30px">Past Recordings</h3>
+  <div class="past-recordings-list" style="margin-top: 10px">
+    <ul style="list-style: none; padding: 0">
+      <li *ngFor="let recording of recordings" style="margin-bottom: 10px">
+        <span>{{ recording.time }}</span>
+
+        <button
+          class="btn save-btn"
+          style="margin-left: 10px; background-color: #47ce3a; color: white"
+          (click)="download(recording.blob, recording.name)"
+        >
+          Save
+        </button>
+        <!-- Audio player for each recording -->
+        <div class="player">
+          <audio controls style="margin-top: 5px">
+            <source [src]="sanitizeUrl(recording.blob)" type="audio/webm" />
+          </audio>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

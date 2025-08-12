@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210120",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "hospital",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "hospitalName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hospitalLocation",
+      "fieldType": "Geopoint",
+      "fieldValues": "LATITUDE,LONGITUDE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Hospital",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "liveLocation",
+      "otherEntityRelationshipName": "hospitals",
+      "relationshipName": "liveLocation",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

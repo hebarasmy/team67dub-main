@@ -1,0 +1,18 @@
+<ul class="flex flex-row gap-4 overflow-x-auto py-1 w-full">
+  <li *ngFor="let item of contactList" (click)="handleContactClick(item)">
+    <div class="w-12 h-auto flex flex-col items-center">
+      <img
+        *ngIf="item.image"
+        src="data:image/png;base64,{{ item.image }}"
+        class="rounded-full w-full h-12 object-cover hover:shadow-[0px_0px_5px_#00000080] cursor-pointer"
+      />
+      <div
+        *ngIf="item.image === undefined || item.image === null"
+        class="bg-[#8a2be2] w-12 h-12 flex justify-center items-center font-medium rounded-full"
+      >
+        <span>{{ item?.contactName ? item?.contactName?.toUpperCase()?.charAt(0) : '' }}</span>
+      </div>
+      <span>{{ item.contactName }}</span>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210116",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "user_chat_history",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "senderUserID",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "receiverUserID",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "messageContent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "messageDateTime",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "UserChatHistory",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,12 @@
+entity userProfile{
+    id String required
+}
+application {
+
+    config {
+    baseName appName
+    packageName appPackage
+    applicationType monolith
+    
+  }
+}

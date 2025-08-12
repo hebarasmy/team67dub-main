@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210119",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "police_station",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "stationName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "stationLocation",
+      "fieldType": "Geopoint",
+      "fieldValues": "LATITUDE,LONGITUDE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "PoliceStation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "liveLocation",
+      "otherEntityRelationshipName": "policeStations",
+      "relationshipName": "liveLocation",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

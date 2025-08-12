@@ -1,0 +1,23 @@
+<ul class="flex flex-col gap-3 h-full overflow-auto flex-1">
+  <li
+    *ngFor="let item of contactList"
+    class="flex gap-3 items-center p-3 rounded-md bg-[#202020] transition duration-500 ease-in-out cursor-pointer"
+    (click)="handleMessageClick(item)"
+  >
+    <img
+      *ngIf="item.image"
+      src="data:image/png;base64,{{ item.image }}"
+      class="rounded-full w-12 h-12 object-cover hover:shadow-[0px_0px_5px_#00000080] cursor-pointer"
+    />
+    <div
+      *ngIf="item.image === undefined || item.image === null"
+      class="bg-[#8a2be2] w-12 h-12 flex justify-center items-center font-medium rounded-full"
+    >
+      <span>{{ item?.contactName ? item?.contactName?.toUpperCase()?.charAt(0) : '' }}</span>
+    </div>
+    <div class="flex flex-col">
+      <span class="font-semibold">{{ item.contactName }}</span>
+      <span class="text-sm">Click to begin to chat</span>
+    </div>
+  </li>
+</ul>

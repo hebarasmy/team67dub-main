@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20240326210112",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "sos_button",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActivated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "Geopoint",
+      "fieldValues": "LATITUDE,LONGITUDE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "SOSButton",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "sOSButton",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "liveLocation",
+      "otherEntityRelationshipName": "sOSButtons",
+      "ownerSide": true,
+      "relationshipName": "liveLocation",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "contacts",
+      "otherEntityRelationshipName": "sOSButton",
+      "relationshipName": "contacts",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

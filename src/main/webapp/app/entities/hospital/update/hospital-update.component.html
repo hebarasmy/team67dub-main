@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-hospital-heading" data-cy="HospitalCreateUpdateHeading">Create or edit a Hospital</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_hospitalName">Hospital Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="hospitalName"
+            id="field_hospitalName"
+            data-cy="hospitalName"
+            formControlName="hospitalName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_hospitalLocation">Hospital Location</label>
+          <select
+            class="form-control"
+            name="hospitalLocation"
+            formControlName="hospitalLocation"
+            id="field_hospitalLocation"
+            data-cy="hospitalLocation"
+          >
+            <option [ngValue]="null"></option>
+            <option *ngFor="let geopoint of geopointValues" [value]="geopoint">geopoint</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_liveLocation">Live Location</label>
+          <select
+            class="form-control"
+            id="field_liveLocation"
+            data-cy="liveLocation"
+            name="liveLocation"
+            formControlName="liveLocation"
+            [compareWith]="compareLiveLocation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="liveLocationOption" *ngFor="let liveLocationOption of liveLocationsSharedCollection">
+              {{ liveLocationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<nav data-cy="navbar" class="navbar navbar-light navbar-expand-md bg-light">
+  <div class="container-fluid">
+    <!-- Brand/logo -->
+    <a class="navbar-brand mx-auto" routerLink="/" (click)="collapseNavbar()">
+      <span class="navbar-title" style="font-family: 'Arial', sans-serif; color: #6777ef; font-weight: bold; font-size: 24px"
+        >My Safety</span
+      >
+    </a>
+
+    <!-- Toggler for mobile view -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <fa-icon icon="bars"></fa-icon>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <!-- Ensure this is ml-auto to push to the right -->
+        <!-- Home icon -->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/">
+            <fa-icon icon="home"></fa-icon>
+          </a>
+        </li>
+
+        <!-- Account icon -->
+        <li class="nav-item dropdown" ngbDropdown display="dynamic">
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
+            <fa-icon icon="user"></fa-icon>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelledby="account-menu"></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
