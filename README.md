@@ -29,6 +29,23 @@ While coding my dissertation, I always needed background noise — so I put on A
 - **Accessibility-first UI** — large round buttons, strong contrast, clear typography
 
 ---
+## 🎥 Demos
+
+### Project Demo
+<video controls width="720" src="docs/T6704-app-demo-1.mp4?raw=1">
+  Your browser does not support the video tag.
+  <a href="docs/T6704-app-demo-1.mp4?raw=1">Download the demo video</a>.
+</video>
+
+### Accessibility Demo
+<video controls width="720" src="docs/T67P05-a11y-demo.mp4?raw=1">
+  Your browser does not support the video tag.
+  <a href="docs/T67P05-a11y-demo.mp4?raw=1">Download the accessibility demo</a>.
+</video>
+
+> Tip: If the embedded player doesn’t render on some GitHub clients (rare), the links above still let viewers download or play the files directly.
+
+---
 
 ## 🧰 Tech stack (skills used)
 
