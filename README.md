@@ -40,33 +40,16 @@ We set out to design a tool that works **under stress**: one tap, clear choices,
 ---
 ## 🎥 Demos
 
-### ♿️ Accessibility Demo
+### Project Demo
 <video
-  src="https://raw.githubusercontent.com/hebarasmy/team67dub-main/main/docs/T67P05-a11y-demo.mp4"
+  src="https://github.com/hebarasmy/team67dub-main/raw/main/docs/T6704-app-demo-1.mp4"
   controls
-  playsinline
-  muted
-  style="width:100%;max-width:900px;border-radius:12px;outline:0;"
->
-  Your browser can’t play this video. Use the direct link below to download/watch.
+  width="720"
+  preload="metadata">
+  Sorry, your browser can’t play this video. Use the link below to download.
 </video>
 
-**Direct link:** https://github.com/hebarasmy/team67dub-main/raw/main/docs/T67P05-a11y-demo.mp4
-
----
-
-### 📱 App Demo (normal flow)
-<video
-  src="https://raw.githubusercontent.com/hebarasmy/team67dub-main/main/docs/T6704-app-demo-1.mp4"
-  controls
-  playsinline
-  muted
-  style="width:100%;max-width:900px;border-radius:12px;outline:0;"
->
-  Your browser can’t play this video. Use the direct link below to download/watch.
-</video>
-
-**Direct link:** https://github.com/hebarasmy/team67dub-main/raw/main/docs/T6704-app-demo-1.mp4
+**Direct link (fallback):** https://github.com/hebarasmy/team67dub-main/raw/main/docs/T6704-app-demo-1.mp4
 
 ---
 
