@@ -1,6 +1,6 @@
 # teamproject
 
-This application was generated using JHipster 7.9.4, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.4](https://www.jhipster.tech/documentation-archive/v7.9.4).
+This application was generated using JHipster 7.9.4, you can find documentation and help at https://www.jhipster.tech/documentation-archive-v6-to-v7/v7.9.4/.
 
 # MySafety — Team67dub
 
